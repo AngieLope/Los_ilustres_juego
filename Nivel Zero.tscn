@@ -1,0 +1,214 @@
+[gd_scene load_steps=20 format=3 uid="uid://dbq8ps2k3ucg5"]
+
+[ext_resource type="Script" path="res://NivelZero.gd" id="1_aectb"]
+[ext_resource type="PackedScene" uid="uid://cdm6lk70fjh0c" path="res://Recurso fondo/static_body_2d.tscn" id="2_37cjf"]
+[ext_resource type="PackedScene" uid="uid://cknc3234ndqq5" path="res://Player/Jacinto.tscn" id="2_w83ki"]
+[ext_resource type="PackedScene" uid="uid://bwhq8tttupnuo" path="res://character_body_2d.tscn" id="3_01j6n"]
+[ext_resource type="Script" path="res://ZonaCaida.gd" id="4_t3trd"]
+[ext_resource type="Texture2D" uid="uid://dvxbrqi77itg5" path="res://recurso nivel/muro.png" id="5_xr8us"]
+[ext_resource type="Texture2D" uid="uid://dp4ucuta58k6q" path="res://recurso nivel/Puertaabierta.png" id="7_giggq"]
+[ext_resource type="Texture2D" uid="uid://mghk3c10depk" path="res://recurso nivel/puertacerrada.png" id="8_bscm8"]
+[ext_resource type="Texture2D" uid="uid://bh5gmi5rtelmp" path="res://recurso nivel/Cuadro.jpg" id="9_1kd5y"]
+[ext_resource type="AudioStream" uid="uid://bb02yv5gw1nri" path="res://sonido/Nivel-1.ogg" id="10_467q6"]
+[ext_resource type="PackedScene" uid="uid://p068om22bpwo" path="res://FantasmaGuia.tscn" id="11_5tfvn"]
+[ext_resource type="Texture2D" uid="uid://byyqk5ox4f1ml" path="res://guia/guia.png" id="12_exo3y"]
+[ext_resource type="FontFile" uid="uid://bq6x5gay7j4ph" path="res://fuente/Retro Gaming.ttf" id="13_8lx4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj08r"]
+size = Vector2(41, 374)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_407q2"]
+size = Vector2(5112, 409.5)
+
+[sub_resource type="TileSet" id="TileSet_ahk1f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06akc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_giggq")
+}],
+"loop": false,
+"name": &"Abierta",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bscm8")
+}],
+"loop": false,
+"name": &"Cerrada",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rapc"]
+size = Vector2(51.3345, 348.927)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyewp"]
+bg_color = Color(0.0509804, 0.0509804, 0.121569, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.368627, 0.368627, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-176, -72)
+script = ExtResource("1_aectb")
+
+[node name="Jacinto" parent="." instance=ExtResource("2_w83ki")]
+z_index = 1
+position = Vector2(-898, 354)
+scale = Vector2(1.07023, 1.08821)
+
+[node name="Camera2D" type="Camera2D" parent="Jacinto"]
+position = Vector2(344, 40)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(624, 487)
+scale = Vector2(172.908, -36.3068)
+enabled = false
+limit_left = 0
+limit_right = 0
+drag_horizontal_enabled = true
+drag_right_margin = 0.08
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_37cjf")]
+position = Vector2(-408, -90)
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3810, 616)
+shape = SubResource("RectangleShape2D_cj08r")
+
+[node name="Enemigo_banano" parent="." instance=ExtResource("3_01j6n")]
+z_index = 2
+position = Vector2(3279, 750)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-34, -12)
+collision_mask = 8
+script = ExtResource("4_t3trd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1970, 1102)
+shape = SubResource("RectangleShape2D_407q2")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(1811, 523)
+tile_set = SubResource("TileSet_ahk1f")
+format = 2
+
+[node name="Wall" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(3398, 522)
+scale = Vector2(1, 0.955782)
+texture = ExtResource("5_xr8us")
+
+[node name="Puerta" type="AnimatedSprite2D" parent="."]
+position = Vector2(4297, 522)
+rotation = -0.0227943
+sprite_frames = SubResource("SpriteFrames_06akc")
+animation = &"Cerrada"
+autoplay = "Cerrada"
+
+[node name="Area2D" type="Area2D" parent="Puerta"]
+position = Vector2(2.0874, 96.0242)
+collision_mask = 8
+
+[node name="Collision_puerta" type="CollisionShape2D" parent="Puerta/Area2D"]
+position = Vector2(43.2334, -79.6378)
+shape = SubResource("RectangleShape2D_5rapc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1947, 486)
+scale = Vector2(0.197044, 0.221181)
+texture = ExtResource("9_1kd5y")
+
+[node name="SonidoFondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_467q6")
+
+[node name="fantasma" parent="." instance=ExtResource("11_5tfvn")]
+position = Vector2(-242, 544)
+dialogo = "Avanza...
+Este lugar no perdona
+ a los inmóviles.
+[<] [>] para moverte"
+tipo_control = "mover"
+
+[node name="fantasma2" parent="." instance=ExtResource("11_5tfvn")]
+position = Vector2(959, 530)
+dialogo = "Muchos intentaron 
+huir de los disparos...
+[X] para saltar "
+tiempo_aparicion = 0.0
+tipo_control = "saltar"
+
+[node name="fantasma3" parent="." instance=ExtResource("11_5tfvn")]
+position = Vector2(2235, 637)
+dialogo = "La memoria también lucha.
+[Z] para atacar"
+tiempo_aparicion = 0.0
+tipo_control = "atacar"
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -336.0
+offset_top = 271.0
+offset_right = -296.0
+offset_bottom = 311.0
+
+[node name="DialogBox" type="Panel" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 80.0
+offset_top = 30.0
+offset_right = 567.0
+offset_bottom = 190.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dyewp")
+
+[node name="Portrait" type="TextureRect" parent="UI/DialogBox"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 4.00001
+offset_right = 325.0
+offset_bottom = 334.0
+scale = Vector2(0.438004, 0.438004)
+texture = ExtResource("12_exo3y")
+
+[node name="NameLabel" type="Label" parent="UI/DialogBox"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 206.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("13_8lx4m")
+theme_override_font_sizes/font_size = 18
+text = "Fantasma"
+
+[node name="DialogLabel" type="Label" parent="UI/DialogBox"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 50.0
+offset_right = 630.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_8lx4m")
+theme_override_font_sizes/font_size = 17
+
+[node name="ControlLabel" type="Label" parent="UI/DialogBox"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 95.0
+offset_right = 170.0
+offset_bottom = 119.0
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_8lx4m")
+theme_override_font_sizes/font_size = 17
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Puerta/Area2D" to="Jacinto" method="_on_area_2d_body_entered"]

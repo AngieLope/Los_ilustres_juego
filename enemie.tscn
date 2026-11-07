@@ -1,0 +1,142 @@
+[gd_scene load_steps=22 format=3 uid="uid://cbhcfwfueyq4d"]
+
+[ext_resource type="Script" path="res://Enemie.gd" id="1_dokax"]
+[ext_resource type="Texture2D" uid="uid://yejt18k34bij" path="res://Enemigo/Ataque/Sprite-1.png" id="1_tubql"]
+[ext_resource type="Texture2D" uid="uid://bkvsxy1rwqr37" path="res://Enemigo/Ataque/Sprite-2.png" id="2_2xj3x"]
+[ext_resource type="Texture2D" uid="uid://dcym8l4nj8w11" path="res://Enemigo/Ataque/Sprite-3.png" id="3_m8ted"]
+[ext_resource type="Texture2D" uid="uid://cfc8kxap1o0d6" path="res://Enemigo/Caminar/sprite1.png" id="4_5r16p"]
+[ext_resource type="Texture2D" uid="uid://cwi46j53knlgt" path="res://Enemigo/Caminar/sprite2.png" id="5_jfy4s"]
+[ext_resource type="Texture2D" uid="uid://clqosc8ooj3r2" path="res://Enemigo/Caminar/sprite3.png" id="6_7spmw"]
+[ext_resource type="Texture2D" uid="uid://e7k0j646fw6i" path="res://Enemigo/Caminar/sprite4.png" id="7_8cxlt"]
+[ext_resource type="Texture2D" uid="uid://c0i67o4x0vsgw" path="res://Enemigo/Caminar/sprite5.png" id="8_xp7ox"]
+[ext_resource type="Texture2D" uid="uid://vicw763drh8h" path="res://Enemigo/Caminar/sprite6.png" id="9_ugklm"]
+[ext_resource type="Texture2D" uid="uid://deaql3pggty6x" path="res://Enemigo/Caminar/sprite7.png" id="10_v5c13"]
+[ext_resource type="Texture2D" uid="uid://c63bjfxxeckgf" path="res://Enemigo/Caminar/sprite8.png" id="11_u1cm7"]
+[ext_resource type="Texture2D" uid="uid://bqbe70bgxrfqe" path="res://Enemigo/Muerte/sprite1.png" id="12_mbtoe"]
+[ext_resource type="Texture2D" uid="uid://cujn525pecsxx" path="res://Enemigo/Muerte/sprite2.png" id="13_170xb"]
+[ext_resource type="Texture2D" uid="uid://cp535sfkv5el6" path="res://Enemigo/Muerte/sprite3.png" id="14_wvxy6"]
+[ext_resource type="Texture2D" uid="uid://c2lrfepxmck0d" path="res://Enemigo/Muerte/sprite-4.png" id="15_smlau"]
+[ext_resource type="Texture2D" uid="uid://hongbhhe0mhn" path="res://Enemigo/Enemigo/sprite2.png" id="16_sv7um"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yh1u7"]
+size = Vector2(64, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rox5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tubql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2xj3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m8ted")
+}],
+"loop": true,
+"name": &"ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5r16p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jfy4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7spmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8cxlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xp7ox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ugklm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v5c13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u1cm7")
+}],
+"loop": true,
+"name": &"caminar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_mbtoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_170xb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wvxy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_smlau")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_sv7um")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_crx4y"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5lc8"]
+size = Vector2(161, 165)
+
+[node name="Enemie" type="CharacterBody2D"]
+script = ExtResource("1_dokax")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(22, 72)
+shape = SubResource("RectangleShape2D_yh1u7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(138, 69)
+scale = Vector2(1.64615, 1.64615)
+sprite_frames = SubResource("SpriteFrames_rox5y")
+animation = &"caminar"
+flip_h = true
+script = SubResource("GDScript_crx4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(188, 78.5)
+shape = SubResource("RectangleShape2D_p5lc8")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+position = Vector2(138, 69)
+scale = Vector2(1.64615, 1.64615)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtwrp3imji8ux"]
+
+[ext_resource type="AudioStream" uid="uid://bxpy3kjx7hjs8" path="res://sonido/intro.mp3" id="1_m0jfr"]
+[ext_resource type="Script" path="res://fondonegro.gd" id="1_o8i1d"]
+[ext_resource type="FontFile" uid="uid://bq6x5gay7j4ph" path="res://fuente/Retro Gaming.ttf" id="3_shu11"]
+[ext_resource type="AudioStream" uid="uid://cnge21801214c" path="res://sonido/texto en pantalla.mp3" id="4_fftqd"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o8i1d")
+
+[node name="VozOff" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_m0jfr")
+volume_db = 8.158
+
+[node name="FondoNegro" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1389.0
+offset_bottom = 782.0
+color = Color(0, 0, 0, 1)
+
+[node name="LabelTexto" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 192.0
+offset_right = 240.0
+offset_bottom = 223.0
+theme_override_constants/line_spacing = 24
+theme_override_fonts/font = ExtResource("3_shu11")
+theme_override_font_sizes/font_size = 24
+
+[node name="Texto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fftqd")

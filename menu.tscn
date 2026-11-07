@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqfhy52q8bkwg"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_c1dl8"]
+[ext_resource type="Texture2D" uid="uid://dhenqatjdrpn6" path="res://Boton/Boton-jugar.png" id="1_d2mep"]
+[ext_resource type="Texture2D" uid="uid://ct2yn46ki8pci" path="res://recurso nivel/Ejemplo-menu-1.png" id="1_p7itc"]
+[ext_resource type="Texture2D" uid="uid://d3j8etn45m25n" path="res://recurso nivel/menu_los_ilustres.png" id="2_knfo0"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_right = 72.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c1dl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(779, 358)
+scale = Vector2(0.773438, 0.716797)
+texture = ExtResource("2_knfo0")
+
+[node name="Ejemplo-menu-1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(686.194, 359)
+scale = Vector2(0.668399, 0.613281)
+texture = ExtResource("1_p7itc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(9.99, 30.175)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -52.0
+offset_right = 234.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/icon_pressed_color = Color(0.929412, 0, 0, 1)
+action_mode = 0
+icon = ExtResource("1_d2mep")
+flat = true
+alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]

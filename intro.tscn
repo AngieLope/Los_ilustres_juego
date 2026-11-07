@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj2kq4drqri84"]
+
+[ext_resource type="VideoStream" path="res://videointro/Los-Ilustres-Nueva-Intro_2.ogv" id="1_hvkhr"]
+[ext_resource type="Script" path="res://intro.gd" id="2_3orr5"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("2_3orr5")
+
+[node name="intro" type="VideoStreamPlayer" parent="."]
+offset_right = 1371.0
+offset_bottom = 743.0
+stream = ExtResource("1_hvkhr")
+autoplay = true
+expand = true

@@ -1,0 +1,196 @@
+[gd_scene load_steps=30 format=3 uid="uid://bwhq8tttupnuo"]
+
+[ext_resource type="Script" path="res://Script/Enemigo_banano.gd" id="1_5vrx8"]
+[ext_resource type="Texture2D" uid="uid://yejt18k34bij" path="res://Enemigo/Ataque/Sprite-1.png" id="1_m12ab"]
+[ext_resource type="PackedScene" uid="uid://c0eqhfx5h55bu" path="res://flecha.tscn" id="2_5ila5"]
+[ext_resource type="Texture2D" uid="uid://bkvsxy1rwqr37" path="res://Enemigo/Ataque/Sprite-2.png" id="2_7m4mj"]
+[ext_resource type="Texture2D" uid="uid://cfc8kxap1o0d6" path="res://Enemigo/Caminar/sprite1.png" id="4_s5gwl"]
+[ext_resource type="Texture2D" uid="uid://cwi46j53knlgt" path="res://Enemigo/Caminar/sprite2.png" id="5_5n1iq"]
+[ext_resource type="Texture2D" uid="uid://clqosc8ooj3r2" path="res://Enemigo/Caminar/sprite3.png" id="6_qthtc"]
+[ext_resource type="Texture2D" uid="uid://e7k0j646fw6i" path="res://Enemigo/Caminar/sprite4.png" id="7_oerx8"]
+[ext_resource type="Texture2D" uid="uid://c0i67o4x0vsgw" path="res://Enemigo/Caminar/sprite5.png" id="8_uj2il"]
+[ext_resource type="Texture2D" uid="uid://vicw763drh8h" path="res://Enemigo/Caminar/sprite6.png" id="9_pgnqg"]
+[ext_resource type="Texture2D" uid="uid://deaql3pggty6x" path="res://Enemigo/Caminar/sprite7.png" id="10_jf1je"]
+[ext_resource type="Texture2D" uid="uid://c63bjfxxeckgf" path="res://Enemigo/Caminar/sprite8.png" id="11_qdu0m"]
+[ext_resource type="Texture2D" uid="uid://bqbe70bgxrfqe" path="res://Enemigo/Muerte/sprite1.png" id="12_0w80g"]
+[ext_resource type="Texture2D" uid="uid://cujn525pecsxx" path="res://Enemigo/Muerte/sprite2.png" id="13_angvv"]
+[ext_resource type="Texture2D" uid="uid://cp535sfkv5el6" path="res://Enemigo/Muerte/sprite3.png" id="14_vrdx6"]
+[ext_resource type="Texture2D" uid="uid://c2lrfepxmck0d" path="res://Enemigo/Muerte/sprite-4.png" id="15_eme4d"]
+[ext_resource type="AudioStream" uid="uid://dmguk5b4mmqxf" path="res://sonido/Enemigo muere.mp3" id="17_1naur"]
+[ext_resource type="AudioStream" uid="uid://bdpf50cak7h2v" path="res://sonido/Enemigo Camina.mp3" id="18_44ml8"]
+[ext_resource type="AudioStream" uid="uid://biwhuh8vr0g11" path="res://sonido/Daño a Enemigo.mp3" id="20_04ji6"]
+[ext_resource type="AudioStream" uid="uid://q7sb220v73ih" path="res://sonido/Enemigoataque.mp3" id="20_l44i0"]
+[ext_resource type="Texture2D" uid="uid://bh7dmobudd3i6" path="res://Barravida/vidallena.png" id="21_v0r46"]
+[ext_resource type="Texture2D" uid="uid://b4qks2iekiang" path="res://Barravida/vidaquitar.png" id="22_8rekt"]
+
+[sub_resource type="Animation" id="Animation_ivura"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ojvq7"]
+resource_name = "ataqueder"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_a4vk2"]
+resource_name = "ataqueizq"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5mve6"]
+_data = {
+"RESET": SubResource("Animation_ivura"),
+"ataqueder": SubResource("Animation_ojvq7"),
+"ataqueizq": SubResource("Animation_a4vk2")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48axh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m12ab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7m4mj")
+}],
+"loop": false,
+"name": &"ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_s5gwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5n1iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qthtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oerx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uj2il")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pgnqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jf1je")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qdu0m")
+}],
+"loop": true,
+"name": &"caminar",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0w80g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_angvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vrdx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_eme4d")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0w80g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_angvv")
+}],
+"loop": false,
+"name": &"recibir_golpe",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnm42"]
+radius = 22.6667
+height = 112.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xdnp"]
+size = Vector2(163, 49.5)
+
+[node name="enemie" type="CharacterBody2D" groups=["enemie"]]
+position = Vector2(1, 1)
+script = ExtResource("1_5vrx8")
+bullet = ExtResource("2_5ila5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5mve6")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-42.375, -2.75)
+scale = Vector2(2.25, 2.25)
+sprite_frames = SubResource("SpriteFrames_48axh")
+animation = &"ataque"
+frame = 1
+frame_progress = 1.0
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13, -5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_fnm42")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-2, -4)
+target_position = Vector2(0, 124)
+
+[node name="spawbullet" type="Marker2D" parent="."]
+
+[node name="detect_izq" type="RayCast2D" parent="."]
+target_position = Vector2(-304, -2)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="detect_der" type="RayCast2D" parent="."]
+target_position = Vector2(305, 0)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="muerte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_1naur")
+
+[node name="walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_44ml8")
+
+[node name="ataque" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_l44i0")
+
+[node name="golper_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="daño" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_04ji6")
+
+[node name="TextureProgress" type="TextureProgressBar" parent="."]
+offset_left = -63.0
+offset_top = -116.0
+offset_right = 45.0
+offset_bottom = -86.0
+size_flags_vertical = 0
+max_value = 3.0
+value = 3.0
+texture_under = ExtResource("22_8rekt")
+texture_progress = ExtResource("21_v0r46")
+
+[node name="Hurbox" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="Hurbox_collider" type="CollisionShape2D" parent="Hurbox"]
+position = Vector2(-220.5, 19)
+shape = SubResource("RectangleShape2D_6xdnp")
+debug_color = Color(0.745098, 0.411765, 0.560784, 0.419608)
+
+[connection signal="timeout" from="golper_timer" to="." method="_on_golper_timer_timeout"]
+[connection signal="body_entered" from="Hurbox" to="." method="_on_hurbox_body_entered"]
