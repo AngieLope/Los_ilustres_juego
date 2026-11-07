@@ -22,6 +22,7 @@ Este proyecto nace de la exploración del desarrollo de videojuegos, integrando 
 
 ### Escenarios
 ![Escenarios](capturas/escenario.png)
+![Escenarios](capturas/escenario1.png)
 
 ## Tecnologías utilizadas
 
