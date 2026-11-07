@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnge21801214c"
+path="res://.godot/imported/texto en pantalla.mp3-f5d87ac9883d0eebbdce790019be08e1.mp3str"
+
+[deps]
+
+source_file="res://sonido/texto en pantalla.mp3"
+dest_files=["res://.godot/imported/texto en pantalla.mp3-f5d87ac9883d0eebbdce790019be08e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

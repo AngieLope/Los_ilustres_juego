@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbm1n52odi47g"
+path="res://.godot/imported/Jacinto Salta.mp3-903095d10395f10e216dcebc11ba20aa.mp3str"
+
+[deps]
+
+source_file="res://sonido/Jacinto Salta.mp3"
+dest_files=["res://.godot/imported/Jacinto Salta.mp3-903095d10395f10e216dcebc11ba20aa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

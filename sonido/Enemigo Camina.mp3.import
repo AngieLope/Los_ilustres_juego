@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdpf50cak7h2v"
+path="res://.godot/imported/Enemigo Camina.mp3-33ab271aec3188113a9519609a99e582.mp3str"
+
+[deps]
+
+source_file="res://sonido/Enemigo Camina.mp3"
+dest_files=["res://.godot/imported/Enemigo Camina.mp3-33ab271aec3188113a9519609a99e582.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

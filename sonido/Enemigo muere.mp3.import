@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmguk5b4mmqxf"
+path="res://.godot/imported/Enemigo muere.mp3-13c2c31e778b00497a8e7a4f6c7373a6.mp3str"
+
+[deps]
+
+source_file="res://sonido/Enemigo muere.mp3"
+dest_files=["res://.godot/imported/Enemigo muere.mp3-13c2c31e778b00497a8e7a4f6c7373a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

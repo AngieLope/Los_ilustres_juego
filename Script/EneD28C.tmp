@@ -1,0 +1,166 @@
+extends CharacterBody2D
+
+@export var bullet: PackedScene
+@onready var vida_barra = $TextureProgress
+
+
+var velocidad: int = 50
+var salud: int = 3
+
+enum State { IDLE, WALKING, ATTACKING, DEAD }
+var current_state = State.WALKING
+
+var is_dead = false
+var can_be_hit = true
+
+signal enemigo_muerto
+
+func _ready():
+	$Hurbox/Hurbox_collider.disabled = true
+	$golper_timer.stop()
+	$AnimatedSprite2D.play("caminar")
+	velocity.x = -velocidad
+
+func _physics_process(_delta):
+
+	match current_state:
+		State.WALKING:
+			caminar()
+
+		State.ATTACKING:
+			atacar()
+
+		State.DEAD:
+			return
+
+	if current_state == State.WALKING:
+		move_and_slide()
+
+
+# DISPARAR FLECHA
+func disparar():
+
+	if bullet == null:
+		return
+
+	var flecha = bullet.instantiate()
+	get_parent().add_child(flecha)
+
+	# Posición de salida
+	if has_node("DisparoPos"):
+		flecha.global_position = $DisparoPos.global_position
+	else:
+		flecha.global_position = global_position
+
+	# Dirección
+	if $AnimatedSprite2D.flip_h:
+		flecha.direccion = Vector2.LEFT
+	else:
+		flecha.direccion = Vector2.RIGHT
+
+func caminar():
+
+	if not is_dead:
+
+		# SOLO cuando detecta al jugador
+		if $detect_izq.is_colliding() or $detect_der.is_colliding():
+
+			mirar_jugador()
+
+		if $detect_izq.is_colliding():
+			iniciar_ataque(true)
+
+		elif $detect_der.is_colliding():
+			iniciar_ataque(false)
+
+	# Cambio de dirección al chocar pared
+	if is_on_wall():
+
+		velocity.x *= -1
+
+	# Flip según movimiento
+	if velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
+
+	elif velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+
+# ATAQUE
+func iniciar_ataque(mirar_izq: bool):
+
+	$ataque.play()
+
+	$AnimatedSprite2D.flip_h = mirar_izq
+
+	set_physics_process(false)
+
+	current_state = State.ATTACKING
+
+	$AnimatedSprite2D.play("ataque")
+
+	disparar()
+
+	await $AnimatedSprite2D.animation_finished
+
+	set_physics_process(true)
+
+	current_state = State.WALKING
+
+	$AnimatedSprite2D.play("caminar")
+
+func atacar():
+	pass
+
+# MUERTE
+func dead():
+
+	if not is_dead:
+
+		salud -= 1
+
+		print("Salud restante enemigo: ", salud)
+
+		vida_barra.value = salud
+
+		if salud > 0:
+
+			$daño.play()
+
+			$AnimatedSprite2D.play("recibir_golpe")
+
+			await $AnimatedSprite2D.animation_finished
+
+			$AnimatedSprite2D.play("caminar")
+
+		else:
+
+			print("El enemigo ha muerto.")
+
+			is_dead = true
+
+			set_physics_process(false)
+
+			$muerte.play()
+
+			$AnimatedSprite2D.play("dead")
+
+			await $AnimatedSprite2D.animation_finished
+
+			emit_signal("enemigo_muerto")
+
+			queue_free()
+
+# DAÑO AL JUGADOR
+func _on_body_entered(body):
+
+	if body.is_in_group("player") and not is_dead:
+		body.hit()
+
+func _on_golper_timer_timeout():
+
+	can_be_hit = true
+
+func _on_hurbox_body_entered(body):
+
+	if body.is_in_group("player"):
+		body.die()
