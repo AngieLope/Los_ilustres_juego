@@ -1,0 +1,178 @@
+[gd_scene load_steps=24 format=3 uid="uid://cdm6lk70fjh0c"]
+
+[ext_resource type="Texture2D" uid="uid://cud1xfl4j0xdw" path="res://recurso nivel/Escena-el-comienzo-1.jpg" id="1_iivsv"]
+[ext_resource type="Texture2D" uid="uid://bph724w12hddb" path="res://recurso nivel/Escena-el-comienzo-2.jpg" id="2_jq5vq"]
+[ext_resource type="Texture2D" uid="uid://bh5gmi5rtelmp" path="res://recurso nivel/Cuadro.jpg" id="3_fkj47"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycdxb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iivsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jq5vq")
+}],
+"loop": true,
+"name": &"Escenanivel",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f711v"]
+size = Vector2(473, 1242)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6oos"]
+size = Vector2(5566, 370)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6nl"]
+size = Vector2(1771.25, 360.312)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bonhs"]
+size = Vector2(228, 238)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cop3"]
+size = Vector2(407.255, 629.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvhcc"]
+size = Vector2(265.25, 341)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqlhp"]
+size = Vector2(1006, 258)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brr3o"]
+size = Vector2(626.5, 286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phjsx"]
+size = Vector2(464, 386)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdgl2"]
+size = Vector2(464, 315.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_immhk"]
+size = Vector2(789.25, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oothg"]
+size = Vector2(338, 253.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iilby"]
+size = Vector2(174.628, 246.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fna8e"]
+size = Vector2(1188.25, 325)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f3ef"]
+size = Vector2(1834.5, 406)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejvtt"]
+size = Vector2(391.5, 1074)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s1fe"]
+size = Vector2(334, 38.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e78im"]
+size = Vector2(414, 350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqskl"]
+size = Vector2(759, 226)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2328, 443)
+sprite_frames = SubResource("SpriteFrames_ycdxb")
+animation = &"Escenanivel"
+autoplay = "Escenanivel"
+frame_progress = 0.845855
+
+[node name="Nueva-escena1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2336, 441)
+scale = Vector2(1.00614, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-457.5, 523)
+shape = SubResource("RectangleShape2D_f711v")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2095, -270)
+shape = SubResource("RectangleShape2D_g6oos")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(653, 920)
+scale = Vector2(1, 1.00398)
+shape = SubResource("RectangleShape2D_4e6nl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(1429, 20)
+shape = SubResource("RectangleShape2D_bonhs")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(1709, 846)
+shape = SubResource("RectangleShape2D_5cop3")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(1974, 980)
+shape = SubResource("RectangleShape2D_cvhcc")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(2420, -30)
+shape = SubResource("RectangleShape2D_sqlhp")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+position = Vector2(2354, 1087)
+shape = SubResource("RectangleShape2D_brr3o")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="."]
+position = Vector2(2355, 43)
+shape = SubResource("RectangleShape2D_phjsx")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="."]
+position = Vector2(2836, 971)
+shape = SubResource("RectangleShape2D_hdgl2")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="."]
+position = Vector2(3408.63, 1015)
+shape = SubResource("RectangleShape2D_immhk")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="."]
+position = Vector2(3244, 316.375)
+shape = SubResource("RectangleShape2D_oothg")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="."]
+position = Vector2(3886.31, 928.25)
+shape = SubResource("RectangleShape2D_iilby")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="."]
+position = Vector2(4562, 966)
+shape = SubResource("RectangleShape2D_fna8e")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="."]
+position = Vector2(4513, -82)
+shape = SubResource("RectangleShape2D_0f3ef")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="."]
+position = Vector2(5008, 684)
+shape = SubResource("RectangleShape2D_ejvtt")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="."]
+position = Vector2(3040, 615.75)
+shape = SubResource("RectangleShape2D_8s1fe")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="."]
+position = Vector2(3975, 253)
+shape = SubResource("RectangleShape2D_e78im")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="."]
+position = Vector2(4467, 63)
+shape = SubResource("RectangleShape2D_jqskl")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1996, 575.5)
+scale = Vector2(0.19256, 0.225867)
+texture = ExtResource("3_fkj47")
