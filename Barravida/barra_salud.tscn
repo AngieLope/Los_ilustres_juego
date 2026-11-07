@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpyrxbwr1ra8i"]
+
+[ext_resource type="Script" path="res://Barravida/barra_salud.gd" id="1_ebgph"]
+[ext_resource type="Texture2D" uid="uid://dhk3gedqmjkrw" path="res://Barravida/Barra-salud-1.png" id="1_orv10"]
+[ext_resource type="Texture2D" uid="uid://bwxh2d41g7pgi" path="res://Barravida/Barra-salud-6.png" id="2_sk316"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ebgph")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_top = -1.0
+offset_right = 108.0
+offset_bottom = 39.0
+value = 100.0
+texture_under = ExtResource("1_orv10")
+texture_progress = ExtResource("2_sk316")
